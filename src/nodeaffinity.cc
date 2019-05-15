@@ -132,7 +132,7 @@ void setAffinity(const FunctionCallbackInfo<Value>& args) {
   args.GetReturnValue().Set(num);
 }
 
-void Init(Handle<Object> exports) {
+void Init(Local<Object> exports) {
   NODE_SET_METHOD(exports, "getAffinity", getAffinity);
   NODE_SET_METHOD(exports, "setAffinity", setAffinity);
 }
