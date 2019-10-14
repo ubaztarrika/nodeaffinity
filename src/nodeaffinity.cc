@@ -30,7 +30,7 @@ void getAffinity(const FunctionCallbackInfo<Value>& args) {
   HandleScope scope(isolate);
 
   if (args.Length() > 0) {
-    isolate->ThrowException(Exception::TypeError(String::NewFromUtf8(isolate, "Invalid number of arguments")));
+    isolate->ThrowException(Exception::TypeError(String::NewFromUtf8(isolate, "Invalid number of arguments").ToLocalChecked()));
   }
 
   long ulCpuMask = -1;
@@ -84,7 +84,7 @@ void setAffinity(const FunctionCallbackInfo<Value>& args) {
   HandleScope scope(isolate);
 
   if (args.Length() != 1 && !args[0]->IsNumber()) {
-    isolate->ThrowException(Exception::TypeError(String::NewFromUtf8(isolate, "Invalid argument")));
+    isolate->ThrowException(Exception::TypeError(String::NewFromUtf8(isolate, "Invalid argument").ToLocalChecked()));
   }
 
   long ulCpuMask = args[0]->NumberValue();
