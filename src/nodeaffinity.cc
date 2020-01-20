@@ -6,6 +6,7 @@
 #include <v8.h>
 #include <iostream>
 
+
 #if defined(V8_OS_POSIX)
  #include <sched.h>
  #include <unistd.h>
@@ -87,7 +88,7 @@ void setAffinity(const FunctionCallbackInfo<Value>& args) {
     isolate->ThrowException(Exception::TypeError(String::NewFromUtf8(isolate, "Invalid argument")));
   }
 
-  long ulCpuMask = args[0]->NumberValue();
+  long ulCpuMask = args[0]->NumberValue(v8::Isolate::GetCurrent()->GetCurrentContext()).ToChecked();
 
 #if V8_OS_POSIX && !V8_OS_MACOSX
   pid_t p = 0;
