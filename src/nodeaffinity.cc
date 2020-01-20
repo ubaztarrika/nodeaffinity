@@ -30,9 +30,9 @@ void getAffinity(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
 
-  if (args.Length() > 0) {
-    isolate->ThrowException(Exception::TypeError(String::NewFromUtf8(isolate, "Invalid number of arguments")));
-  }
+  /*if (args.Length() > 0) {
+    isolate->ThrowException(Exception::TypeError(Nan::New("Invalid number of arguments")));
+  }*/
 
   long ulCpuMask = -1;
 
@@ -84,9 +84,9 @@ void setAffinity(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
 
-  if (args.Length() != 1 && !args[0]->IsNumber()) {
+  /*if (args.Length() != 1 && !args[0]->IsNumber()) {
     isolate->ThrowException(Exception::TypeError(String::NewFromUtf8(isolate, "Invalid argument")));
-  }
+  }*/
 
   long ulCpuMask = args[0]->NumberValue(v8::Isolate::GetCurrent()->GetCurrentContext()).ToChecked();
 
